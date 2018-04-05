@@ -1,3 +1,4 @@
 module.exports={
-  authCtrl:require('./authCtrl.js')
+  users:require('./users.js'),
+  tokenCtrl:require('./tokenCtrl.js')
 }

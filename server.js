@@ -7,7 +7,7 @@ const morgan = require('morgan')
 const path = require('path')
 
 const {
-    authRouter: auth
+    usersRouter: auth
 } = require('./routes')
 
 app.use(cors())

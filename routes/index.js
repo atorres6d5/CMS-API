@@ -1,3 +1,3 @@
 module.exports={
-  authRouter:require('./authRouter.js')
+  usersRouter:require('./usersRouter.js')
 }
