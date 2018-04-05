@@ -1,0 +1,32 @@
+{
+  "name": "CMS-API",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "knex": "knex",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atorres6d5/CMS-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atorres6d5/CMS-API/issues"
+  },
+  "homepage": "https://github.com/atorres6d5/CMS-API#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "knex": "^0.14.4",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.17.3",
+    "pg": "^7.4.1"
+  }
+}
