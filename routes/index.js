@@ -1,3 +1,3 @@
 module.exports={
-  usersRouter:require('./usersRouter.js')
+  userRouter:require('./userRouter.js')
 }

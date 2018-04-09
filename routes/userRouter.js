@@ -3,8 +3,10 @@ const { users , tokenCtrl} = require('../ctrl')
 
 
 
-
-router.post('/newUser', tokenCtrl.checkToken, users.createNewUser )
+router.get('/:id', users.one)
+// router.post('/newUser', tokenCtrl.checkToken, users.create )
+// router.patch('/:id', users.update)
+// router.delete('/:id', users.destroy)
 
 
 module.exports = router

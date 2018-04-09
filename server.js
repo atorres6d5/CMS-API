@@ -7,12 +7,14 @@ const morgan = require('morgan')
 const path = require('path')
 
 const {
-    usersRouter: auth
+    userRouter: users
 } = require('./routes')
 
 app.use(cors())
 app.use(bodyParser.json())
 app.use(morgan('dev'))
+
+app.use('api/users',users)
 
 
 app.use((req, res) => {
