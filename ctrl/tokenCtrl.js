@@ -34,14 +34,15 @@ class tokenCtrl extends ctrl {
 
   static checkPass(req, res, next) {
     const { pass } = req.body
-    usersModel.userName(req.body.username).then(result=>{
-      console.log(result)
-      
+    usersModel.userName(req.body.username)
+    .then(result=>{
       const dataPass = result.password
-      bcrypt.compare( pass, dataPass, (err, res)=>{
-        err ? res.status(400).json({message:err}) : req.hash = res
+
+      let check = bcrypt.compare( pass, dataPass, (err, work)=>{
+        work ? next() : res.status(401).json({message:"Bad Password"})
       })
-    }).then(next())
+      //console.log(check, "check bcrypt")
+    })
 
   }
 
