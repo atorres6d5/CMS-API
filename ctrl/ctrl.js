@@ -12,7 +12,6 @@ module.exports = name => {
         }
 
         static one(req, res, next) {
-          console.log("made it");
             Model.one(req.params.id).then(response => {
                 res.json({
                     [name]: response
