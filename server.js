@@ -13,8 +13,8 @@ const {
 app.use(cors())
 app.use(bodyParser.json())
 app.use(morgan('dev'))
-
-app.use('api/users',users)
+console.log(users);
+app.use('api/users', users)
 
 
 app.use((req, res) => {
