@@ -41,7 +41,6 @@ class tokenCtrl extends ctrl {
       let check = bcrypt.compare( pass, dataPass, (err, work)=>{
         work ? next() : res.status(401).json({message:"Bad Password"})
       })
-      //console.log(check, "check bcrypt")
     })
 
   }
