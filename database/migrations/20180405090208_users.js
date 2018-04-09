@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
     table.increments()
     table.string('name').notNullable()
     table.string('username').notNullable()
-    table.string('password')
+    table.string('password').notNullable()
     table.string('org').notNullable()
     table.boolean('admin').defaultTo(false)
   })

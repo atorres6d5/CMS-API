@@ -5,12 +5,16 @@ const { users , tokenCtrl} = require('../ctrl')
 
 
 router.get('/:id', users.one)
-router.post('/makeToken', tokenCtrl.makeToken)
-router.post('/checkPass', tokenCtrl.checkPass)
+
+router.post('/login', tokenCtrl.checkPass, tokenCtrl.makeToken)
 
 
-// router.post('/newUser', tokenCtrl.checkToken, users.create )
-// router.patch('/:id', users.update)
+// router.post('/newUser', users.checkUser, tokenCtrl.checkToken, tokenCtrl.isAdmin, users.create )
+router.patch('/:id', tokenCtrl.checkToken, tokenCtrl.isAdmin, users.update)
+
+
+
+
 // router.delete('/:id', users.destroy)
 
 

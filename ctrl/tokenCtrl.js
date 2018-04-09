@@ -1,9 +1,13 @@
 const jwt = require('jsonwebtoken')
 const SECRET_KEY = "CUTCO_ORIGIN"
 const bcrypt = require('bcryptjs')
+const ctrl = require('./ctrl.js')(`users`)
+const { usersModel } = require('../model')
 
-
-class tokenCtrl {
+class tokenCtrl extends ctrl {
+  constructor(){
+    super()
+  }
 
   static makeToken ( req, res, next ) {
     const { user, org, admin } = req.body
@@ -20,19 +24,30 @@ class tokenCtrl {
   }
 
   static checkToken( req, res, next){
-    const uncode = jwt.verify(token, SECRET_KEY, (err, decode)=>{
-      err ? {message:"Bad Token"} : req.decode = decode
+    const { token } = req.headers
+    jwt.verify(token, SECRET_KEY, (err, decode)=>{
+      err ? res.status(400).json({message:"Bad Token", err}) : req.decode = decode
     })
-    uncode.message ? res.status(400).json({tokenERR:uncode}) : next()
+    console.log("checking if it got decoded", req.decode)
+    next()
   }
 
   static checkPass(req, res, next) {
     const { pass } = req.body
-    bcrypt.hash('password', 10, (err, hash)=>{
-      err ? res.status(400).json({message:err}) : res.status(200).json({ hash })
-    })
+    usersModel.userName(req.body.username).then(result=>{
+      console.log(result)
+      
+      const dataPass = result.password
+      bcrypt.compare( pass, dataPass, (err, res)=>{
+        err ? res.status(400).json({message:err}) : req.hash = res
+      })
+    }).then(next())
+
   }
 
+  static isAdmin(req, res, next){
+    req.decode.admin ? next() : res.status(401).json({message:'Need to be an admin to do that'})
+  }
 }
 
 
