@@ -7,13 +7,15 @@ const morgan = require('morgan')
 const path = require('path')
 
 const {
-    userRouter: users
+    userRouter: users,
+    featureRouter: features
 } = require('./routes')
 
 app.use(cors())
 app.use(bodyParser.json())
 app.use(morgan('dev'))
 app.use('/api/users', users)
+app.use('/api/features', features)
 
 
 app.use((req, res) => {
