@@ -41,5 +41,8 @@ exports.seed = function(knex, Promise) {
         orgID: 4
       }
     ]);
-  });
+  })
+  .then(() => {
+      return knex.raw(`SELECT setval('features_id_seq', (SELECT MAX(id) FROM features));`)
+    })
 };

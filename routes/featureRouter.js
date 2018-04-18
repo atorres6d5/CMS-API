@@ -3,8 +3,8 @@ const { featureCtrl , tokenCtrl} = require('../ctrl')
 
 
 
-router.get('/:id', featureCtrl.all)
-router.post('/', featureCtrl.create)
+router.get('/:id', featureCtrl.filterByOrg)
+router.post('/', featureCtrl.debug, featureCtrl.create)
 router.patch('/:id', featureCtrl.update)
 router.delete('/:id', featureCtrl.destroy)
 
